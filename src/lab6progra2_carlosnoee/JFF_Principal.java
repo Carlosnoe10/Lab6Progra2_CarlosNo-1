@@ -5,7 +5,11 @@
 package lab6progra2_carlosnoee;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListDataListener;
 
 /**
  *
@@ -17,8 +21,17 @@ public class JFF_Principal extends javax.swing.JFrame {
     public ArrayList<Jugadores> ArrJugadoreLibres = new ArrayList();
     public int POS;
 
+    public void LlenarList() {
+        DefaultListModel Modelito = new DefaultListModel();
+        for (int i = 0; i < ArrJugadoreLibres.size(); i++) {
+            Modelito.addElement(ArrJugadoreLibres.get(i).getNombre());
+        }
+        JL_Jugadores.setModel(Modelito);
+    }
+
     public JFF_Principal() {
         initComponents();
+        LlenarList();
         LlenarCombox();
         JF_MenuPrincipal.setBounds(this.getBounds());
         JF_MenuPrincipal.setLocationRelativeTo(this);
@@ -255,6 +268,11 @@ public class JFF_Principal extends javax.swing.JFrame {
 
         BT_AgregarJugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         BT_AgregarJugadores.setText("Agregar");
+        BT_AgregarJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_AgregarJugadoresActionPerformed(evt);
+            }
+        });
 
         JB_AtrasJugadores.setBackground(new java.awt.Color(204, 0, 0));
         JB_AtrasJugadores.setForeground(new java.awt.Color(255, 255, 255));
@@ -728,6 +746,14 @@ public class JFF_Principal extends javax.swing.JFrame {
         JF_CrearEquipos.setVisible(false);
         JF_MenuPrincipal.setVisible(true);
     }//GEN-LAST:event_BT_AgregarEquiposActionPerformed
+
+    private void BT_AgregarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AgregarJugadoresActionPerformed
+        ArrJugadoreLibres.add(new Jugadores(JT_NombreJugador.getText(), (Integer) JSP_Edad.getValue(), JCBOX_Posicion.getSelectedItem().toString()));
+        JOptionPane.showMessageDialog(JF_CrearJugadores, "Creado con exito");
+        JF_CrearJugadores.setVisible(false);
+        JF_MenuPrincipal.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BT_AgregarJugadoresActionPerformed
 
     /**
      * @param args the command line arguments
