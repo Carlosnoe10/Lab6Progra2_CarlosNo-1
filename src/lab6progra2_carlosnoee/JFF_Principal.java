@@ -54,10 +54,11 @@ public class JFF_Principal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTree2 = new javax.swing.JTree();
-        jButton4 = new javax.swing.JButton();
+        JTree_Equipos = new javax.swing.JTree();
+        JB_TransferenciasJugadores = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        JL_Jugadores = new javax.swing.JList<>();
+        JB_AtrasJugadores = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -286,24 +287,27 @@ public class JFF_Principal extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Equipos");
 
-        jTree2.setBackground(java.awt.Color.orange);
-        jTree2.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jScrollPane2.setViewportView(jTree2);
+        JTree_Equipos.setBackground(java.awt.Color.orange);
+        JTree_Equipos.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jScrollPane2.setViewportView(JTree_Equipos);
 
-        jButton4.setBackground(java.awt.Color.green);
-        jButton4.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Transferir ----->");
+        JB_TransferenciasJugadores.setBackground(java.awt.Color.green);
+        JB_TransferenciasJugadores.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JB_TransferenciasJugadores.setForeground(new java.awt.Color(0, 0, 0));
+        JB_TransferenciasJugadores.setText("Transferir ----->");
 
-        jList1.setBackground(java.awt.Color.orange);
-        jList1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jList1.setForeground(new java.awt.Color(0, 0, 0));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        JL_Jugadores.setBackground(java.awt.Color.orange);
+        JL_Jugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        JL_Jugadores.setForeground(new java.awt.Color(0, 0, 0));
+        JL_Jugadores.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(JL_Jugadores);
+
+        JB_AtrasJugadores.setBackground(new java.awt.Color(204, 0, 51));
+        JB_AtrasJugadores.setText("Atras");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -315,9 +319,15 @@ public class JFF_Principal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JB_TransferenciasJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JB_AtrasJugadores)
+                        .addGap(79, 79, 79)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
@@ -336,7 +346,9 @@ public class JFF_Principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addComponent(jButton4))
+                        .addComponent(JB_TransferenciasJugadores)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JB_AtrasJugadores))
                     .addComponent(jScrollPane1))
                 .addGap(0, 24, Short.MAX_VALUE))
         );
@@ -478,10 +490,13 @@ public class JFF_Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_AgregarEquipos;
     private javax.swing.JButton BT_AgregarJugadores;
+    private javax.swing.JButton JB_AtrasJugadores;
+    private javax.swing.JButton JB_TransferenciasJugadores;
     private javax.swing.JComboBox<String> JCBOX_Posicion;
     private javax.swing.JFrame JF_CrearEquipos;
     private javax.swing.JFrame JF_CrearJugadores;
     private javax.swing.JFrame JF_Transferencias;
+    private javax.swing.JList<String> JL_Jugadores;
     private javax.swing.JMenuBar JMB_Principal;
     private javax.swing.JMenuItem JMI_CrearEquipos;
     private javax.swing.JMenuItem JMI_CrearJugadores;
@@ -494,10 +509,10 @@ public class JFF_Principal extends javax.swing.JFrame {
     private javax.swing.JTextField JT_NombreDelEquipo;
     private javax.swing.JTextField JT_NombreJugador;
     private javax.swing.JTextField JT_PaisDelEquipo;
+    private javax.swing.JTree JTree_Equipos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -511,13 +526,11 @@ public class JFF_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTree jTree2;
     // End of variables declaration//GEN-END:variables
 }
