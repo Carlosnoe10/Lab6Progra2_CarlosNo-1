@@ -53,8 +53,8 @@ public class Equipos {
     public String toString() {
         return "Nombre= " + Nombre + "\n"
                 + "Pais= " + Pais + "\n"
-                + "Cuidad= " + Cuidad + ""
-                + "Estadio= " + Estadio;
+                + "Cuidad= " + Cuidad + "\n"
+                + "Estadio= " + Estadio + "\n";
     }
 
 }
