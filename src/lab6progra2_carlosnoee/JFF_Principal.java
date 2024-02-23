@@ -4,25 +4,35 @@
  */
 package lab6progra2_carlosnoee;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author cd507
  */
 public class JFF_Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFF_Principal
-     */
+    public ArrayList<Jugadores> ArrEquipos = new ArrayList();
+    public ArrayList<Jugadores> ArrJugadoreLibres = new ArrayList();
+    public int POS;
+
     public JFF_Principal() {
         initComponents();
         LlenarCombox();
         JF_MenuPrincipal.setBounds(this.getBounds());
         JF_MenuPrincipal.setLocationRelativeTo(this);
         JF_MenuPrincipal.setVisible(true);
-
     }
-    public void LlenarCombox(){
-        JCBOX_Posicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Defensa", "MedioCampista", "Delantero" }));
+
+    public void LlenarCombox() {
+        JCBOX_Posicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Portero", "Defensa", "MedioCampista", "Delantero"}));
+    }
+
+    public void AjustarMod() {
+        JD_MODJugadores.setLocationRelativeTo(this);
+        JD_MODJugadores.setVisible(true);
+        
+
     }
 
     /**
@@ -81,6 +91,18 @@ public class JFF_Principal extends javax.swing.JFrame {
         JMI_CrearJugadores1 = new javax.swing.JMenuItem();
         JMI_Transferencias1 = new javax.swing.JMenuItem();
         JM_AyudaP = new javax.swing.JMenu();
+        JPOP_MenuJugadores = new javax.swing.JPopupMenu();
+        JPOP_ModJugadores = new javax.swing.JMenuItem();
+        JPOP_DELJugadores = new javax.swing.JMenuItem();
+        JD_MODJugadores = new javax.swing.JDialog();
+        jLabel15 = new javax.swing.JLabel();
+        JT_MODNombreJugador = new javax.swing.JTextField();
+        JSP_MODEdad = new javax.swing.JSpinner();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        JCBOX_Posicion1 = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         JF_CrearEquipos.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -346,6 +368,11 @@ public class JFF_Principal extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        JL_Jugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JL_JugadoresMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JL_Jugadores);
 
         JB_AtrasTransferencias.setBackground(new java.awt.Color(204, 0, 51));
@@ -502,6 +529,93 @@ public class JFF_Principal extends javax.swing.JFrame {
                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
         );
 
+        JPOP_ModJugadores.setText("Modificar");
+        JPOP_ModJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JPOP_ModJugadoresActionPerformed(evt);
+            }
+        });
+        JPOP_MenuJugadores.add(JPOP_ModJugadores);
+
+        JPOP_DELJugadores.setText("Eliminar");
+        JPOP_MenuJugadores.add(JPOP_DELJugadores);
+
+        JD_MODJugadores.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        JD_MODJugadores.setBackground(new java.awt.Color(102, 102, 0));
+        JD_MODJugadores.setName("MOD Jugadores"); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jLabel15.setText("Nombre");
+
+        JT_MODNombreJugador.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+
+        JSP_MODEdad.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        JSP_MODEdad.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
+
+        jLabel16.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jLabel16.setText("Edad");
+
+        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jLabel17.setText("Posicion");
+
+        JCBOX_Posicion1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        JCBOX_Posicion1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel18.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Modificar Jugadores");
+
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jButton1.setText("MOD");
+
+        javax.swing.GroupLayout JD_MODJugadoresLayout = new javax.swing.GroupLayout(JD_MODJugadores.getContentPane());
+        JD_MODJugadores.getContentPane().setLayout(JD_MODJugadoresLayout);
+        JD_MODJugadoresLayout.setHorizontalGroup(
+            JD_MODJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JD_MODJugadoresLayout.createSequentialGroup()
+                .addGroup(JD_MODJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JD_MODJugadoresLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JD_MODJugadoresLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(JD_MODJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JD_MODJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JT_MODNombreJugador)
+                            .addComponent(JCBOX_Posicion1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JSP_MODEdad)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JD_MODJugadoresLayout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(jLabel18)
+                        .addGap(0, 145, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        JD_MODJugadoresLayout.setVerticalGroup(
+            JD_MODJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JD_MODJugadoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18)
+                .addGap(38, 38, 38)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(JD_MODJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(JT_MODNombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JD_MODJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JSP_MODEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addGap(18, 18, 18)
+                .addGroup(JD_MODJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCBOX_Posicion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
 
@@ -556,6 +670,27 @@ public class JFF_Principal extends javax.swing.JFrame {
         JF_MenuPrincipal.setVisible(true);
     }//GEN-LAST:event_JB_AtrasTransferenciasActionPerformed
 
+    private void JL_JugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JL_JugadoresMouseClicked
+        if (evt.isMetaDown()) {
+            System.out.println(evt.getX() + " " + evt.getY());
+            JPOP_MenuJugadores.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+
+
+    }//GEN-LAST:event_JL_JugadoresMouseClicked
+
+    private void JPOP_ModJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPOP_ModJugadoresActionPerformed
+        if (JL_Jugadores.isSelectionEmpty()) {
+        } else {
+            //Empieza desde 0  
+            POS = JL_Jugadores.getSelectedIndex();
+            AjustarMod();
+
+            System.out.println("b");
+        }
+
+    }//GEN-LAST:event_JPOP_ModJugadoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -604,6 +739,8 @@ public class JFF_Principal extends javax.swing.JFrame {
     private javax.swing.JButton JB_Transferencias;
     private javax.swing.JButton JB_TransferenciasJugadores;
     private javax.swing.JComboBox<String> JCBOX_Posicion;
+    private javax.swing.JComboBox<String> JCBOX_Posicion1;
+    private javax.swing.JDialog JD_MODJugadores;
     private javax.swing.JFrame JF_CrearEquipos;
     private javax.swing.JFrame JF_CrearJugadores;
     private javax.swing.JFrame JF_MenuPrincipal;
@@ -615,18 +752,28 @@ public class JFF_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMI_Transferencias1;
     private javax.swing.JMenu JM_AyudaP;
     private javax.swing.JMenu JM_OpcionesP;
+    private javax.swing.JMenuItem JPOP_DELJugadores;
+    private javax.swing.JPopupMenu JPOP_MenuJugadores;
+    private javax.swing.JMenuItem JPOP_ModJugadores;
     private javax.swing.JSpinner JSP_Edad;
+    private javax.swing.JSpinner JSP_MODEdad;
     private javax.swing.JTextField JT_Cuidad;
     private javax.swing.JTextField JT_Estadio;
+    private javax.swing.JTextField JT_MODNombreJugador;
     private javax.swing.JTextField JT_NombreDelEquipo;
     private javax.swing.JTextField JT_NombreJugador;
     private javax.swing.JTextField JT_PaisDelEquipo;
     private javax.swing.JTree JTree_Equipos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
