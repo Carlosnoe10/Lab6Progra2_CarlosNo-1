@@ -26,7 +26,18 @@ public class JFF_Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
+        JF_CrearEquipos = new javax.swing.JFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        JT_NombreDelEquipo = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        JT_Cuidad = new javax.swing.JTextField();
+        JT_PaisDelEquipo = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        JT_Estadio = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        BT_AgregarEquipos = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -39,7 +50,114 @@ public class JFF_Principal extends javax.swing.JFrame {
         JMI_Transferencias = new javax.swing.JMenuItem();
         JM_AyudaP1 = new javax.swing.JMenu();
 
-        jMenu1.setText("jMenu1");
+        JF_CrearEquipos.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 3, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Crear Equipos");
+
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(153, 0, 153));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Cuidad");
+
+        JT_NombreDelEquipo.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JT_NombreDelEquipo.setForeground(new java.awt.Color(153, 0, 153));
+
+        jLabel9.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(153, 0, 153));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Nombre del equipo");
+
+        JT_Cuidad.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JT_Cuidad.setForeground(new java.awt.Color(153, 0, 153));
+
+        JT_PaisDelEquipo.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JT_PaisDelEquipo.setForeground(new java.awt.Color(153, 0, 153));
+
+        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(153, 0, 153));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Paise del equipo");
+
+        JT_Estadio.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JT_Estadio.setForeground(new java.awt.Color(153, 0, 153));
+
+        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(153, 0, 153));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Estadio");
+
+        BT_AgregarEquipos.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        BT_AgregarEquipos.setForeground(new java.awt.Color(0, 0, 0));
+        BT_AgregarEquipos.setText("Agregar");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(BT_AgregarEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(JT_NombreDelEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(JT_PaisDelEquipo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JT_Estadio, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JT_Cuidad, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(79, 79, 79))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JT_PaisDelEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(JT_NombreDelEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(JT_Cuidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(JT_Estadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(81, 81, 81)
+                .addComponent(BT_AgregarEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
+        );
+
+        javax.swing.GroupLayout JF_CrearEquiposLayout = new javax.swing.GroupLayout(JF_CrearEquipos.getContentPane());
+        JF_CrearEquipos.getContentPane().setLayout(JF_CrearEquiposLayout);
+        JF_CrearEquiposLayout.setHorizontalGroup(
+            JF_CrearEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JF_CrearEquiposLayout.setVerticalGroup(
+            JF_CrearEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +170,11 @@ public class JFF_Principal extends javax.swing.JFrame {
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
 
         jButton2.setBackground(new java.awt.Color(204, 0, 51));
@@ -119,6 +242,11 @@ public class JFF_Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JF_CrearEquipos.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,17 +283,28 @@ public class JFF_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BT_AgregarEquipos;
+    private javax.swing.JFrame JF_CrearEquipos;
     private javax.swing.JMenuBar JMB_Principal;
     private javax.swing.JMenuItem JMI_CrearEquipos;
     private javax.swing.JMenuItem JMI_CrearJugadores;
     private javax.swing.JMenuItem JMI_Transferencias;
     private javax.swing.JMenu JM_AyudaP1;
     private javax.swing.JMenu JM_OpcionesP1;
+    private javax.swing.JTextField JT_Cuidad;
+    private javax.swing.JTextField JT_Estadio;
+    private javax.swing.JTextField JT_NombreDelEquipo;
+    private javax.swing.JTextField JT_PaisDelEquipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
