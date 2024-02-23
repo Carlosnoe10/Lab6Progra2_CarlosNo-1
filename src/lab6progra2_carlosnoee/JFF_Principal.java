@@ -15,6 +15,14 @@ public class JFF_Principal extends javax.swing.JFrame {
      */
     public JFF_Principal() {
         initComponents();
+        LlenarCombox();
+        JF_MenuPrincipal.setBounds(this.getBounds());
+        JF_MenuPrincipal.setLocationRelativeTo(this);
+        JF_MenuPrincipal.setVisible(true);
+
+    }
+    public void LlenarCombox(){
+        JCBOX_Posicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Defensa", "MedioCampista", "Delantero" }));
     }
 
     /**
@@ -38,6 +46,7 @@ public class JFF_Principal extends javax.swing.JFrame {
         JT_Estadio = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         BT_AgregarEquipos = new javax.swing.JButton();
+        JB_AtrasEquipos = new javax.swing.JButton();
         JF_CrearJugadores = new javax.swing.JFrame();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -48,6 +57,7 @@ public class JFF_Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         JCBOX_Posicion = new javax.swing.JComboBox<>();
         BT_AgregarJugadores = new javax.swing.JButton();
+        JB_AtrasJugadores = new javax.swing.JButton();
         JF_Transferencias = new javax.swing.JFrame();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -58,18 +68,19 @@ public class JFF_Principal extends javax.swing.JFrame {
         JB_TransferenciasJugadores = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JL_Jugadores = new javax.swing.JList<>();
-        JB_AtrasJugadores = new javax.swing.JButton();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        JB_AtrasTransferencias = new javax.swing.JButton();
+        JF_MenuPrincipal = new javax.swing.JFrame();
+        jToolBar = new javax.swing.JToolBar();
+        JB_CrearEquipos = new javax.swing.JButton();
+        JB_CrearJugadores = new javax.swing.JButton();
+        JB_Transferencias = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
         JMB_Principal = new javax.swing.JMenuBar();
-        JM_OpcionesP1 = new javax.swing.JMenu();
-        JMI_CrearEquipos = new javax.swing.JMenuItem();
-        JMI_CrearJugadores = new javax.swing.JMenuItem();
-        JMI_Transferencias = new javax.swing.JMenuItem();
-        JM_AyudaP1 = new javax.swing.JMenu();
+        JM_OpcionesP = new javax.swing.JMenu();
+        JMI_CrearEquipos1 = new javax.swing.JMenuItem();
+        JMI_CrearJugadores1 = new javax.swing.JMenuItem();
+        JMI_Transferencias1 = new javax.swing.JMenuItem();
+        JM_AyudaP = new javax.swing.JMenu();
 
         JF_CrearEquipos.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +127,14 @@ public class JFF_Principal extends javax.swing.JFrame {
         BT_AgregarEquipos.setForeground(new java.awt.Color(0, 0, 0));
         BT_AgregarEquipos.setText("Agregar");
 
+        JB_AtrasEquipos.setBackground(new java.awt.Color(153, 0, 0));
+        JB_AtrasEquipos.setText("Atras");
+        JB_AtrasEquipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AtrasEquiposActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -124,7 +143,9 @@ public class JFF_Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(150, 150, 150)
                 .addComponent(BT_AgregarEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addComponent(JB_AtrasEquipos)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -138,7 +159,7 @@ public class JFF_Principal extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JT_NombreDelEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(JT_NombreDelEquipo)
                     .addComponent(JT_PaisDelEquipo, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JT_Estadio, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JT_Cuidad, javax.swing.GroupLayout.Alignment.LEADING))
@@ -165,7 +186,9 @@ public class JFF_Principal extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(JT_Estadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(81, 81, 81)
-                .addComponent(BT_AgregarEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BT_AgregarEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JB_AtrasEquipos))
                 .addGap(71, 71, 71))
         );
 
@@ -179,6 +202,8 @@ public class JFF_Principal extends javax.swing.JFrame {
             JF_CrearEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        JF_CrearJugadores.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setForeground(new java.awt.Color(0, 255, 204));
@@ -196,6 +221,7 @@ public class JFF_Principal extends javax.swing.JFrame {
         jLabel4.setText("Edad");
 
         JSP_Edad.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        JSP_Edad.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
 
         jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel5.setText("Posicion");
@@ -205,6 +231,15 @@ public class JFF_Principal extends javax.swing.JFrame {
 
         BT_AgregarJugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         BT_AgregarJugadores.setText("Agregar");
+
+        JB_AtrasJugadores.setBackground(new java.awt.Color(204, 0, 0));
+        JB_AtrasJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        JB_AtrasJugadores.setText("Atras");
+        JB_AtrasJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AtrasJugadoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -227,7 +262,10 @@ public class JFF_Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JSP_Edad)
-                            .addComponent(JCBOX_Posicion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(JCBOX_Posicion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(JB_AtrasJugadores)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -247,7 +285,9 @@ public class JFF_Principal extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(JCBOX_Posicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(BT_AgregarJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BT_AgregarJugadores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JB_AtrasJugadores, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(20, 20, 20))
         );
 
@@ -265,6 +305,8 @@ public class JFF_Principal extends javax.swing.JFrame {
             .addGroup(JF_CrearJugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        JF_Transferencias.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 255));
         jPanel3.setForeground(new java.awt.Color(0, 51, 153));
@@ -306,8 +348,14 @@ public class JFF_Principal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JL_Jugadores);
 
-        JB_AtrasJugadores.setBackground(new java.awt.Color(204, 0, 51));
-        JB_AtrasJugadores.setText("Atras");
+        JB_AtrasTransferencias.setBackground(new java.awt.Color(204, 0, 51));
+        JB_AtrasTransferencias.setForeground(new java.awt.Color(0, 0, 0));
+        JB_AtrasTransferencias.setText("Atras");
+        JB_AtrasTransferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AtrasTransferenciasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -326,8 +374,8 @@ public class JFF_Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JB_AtrasJugadores)
-                        .addGap(79, 79, 79)))
+                        .addComponent(JB_AtrasTransferencias)
+                        .addGap(86, 86, 86)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
@@ -343,14 +391,14 @@ public class JFF_Principal extends javax.swing.JFrame {
                     .addComponent(jLabel13))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(JB_TransferenciasJugadores)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JB_AtrasJugadores))
-                    .addComponent(jScrollPane1))
-                .addGap(0, 24, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addComponent(JB_AtrasTransferencias))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(0, 43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout JF_TransferenciasLayout = new javax.swing.GroupLayout(JF_Transferencias.getContentPane());
@@ -364,93 +412,149 @@ public class JFF_Principal extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        JF_MenuPrincipal.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToolBar1.setBackground(new java.awt.Color(204, 0, 51));
-        jToolBar1.setRollover(true);
+        jToolBar.setBackground(new java.awt.Color(204, 0, 51));
+        jToolBar.setRollover(true);
 
-        jButton1.setBackground(new java.awt.Color(204, 0, 51));
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
-        jButton1.setText("Crear Equipos");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        JB_CrearEquipos.setBackground(new java.awt.Color(204, 0, 51));
+        JB_CrearEquipos.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JB_CrearEquipos.setText("Crear Equipos");
+        JB_CrearEquipos.setFocusable(false);
+        JB_CrearEquipos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_CrearEquipos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_CrearEquipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                JB_CrearEquiposActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        jToolBar.add(JB_CrearEquipos);
 
-        jButton2.setBackground(new java.awt.Color(204, 0, 51));
-        jButton2.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
-        jButton2.setText("Crear Jugadores");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        JB_CrearJugadores.setBackground(new java.awt.Color(204, 0, 51));
+        JB_CrearJugadores.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JB_CrearJugadores.setText("Crear Jugadores");
+        JB_CrearJugadores.setFocusable(false);
+        JB_CrearJugadores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_CrearJugadores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_CrearJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_CrearJugadoresActionPerformed(evt);
+            }
+        });
+        jToolBar.add(JB_CrearJugadores);
 
-        jButton3.setBackground(new java.awt.Color(204, 0, 51));
-        jButton3.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
-        jButton3.setText("Transferencias");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        JB_Transferencias.setBackground(new java.awt.Color(204, 0, 51));
+        JB_Transferencias.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JB_Transferencias.setText("Transferencias");
+        JB_Transferencias.setFocusable(false);
+        JB_Transferencias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        JB_Transferencias.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        JB_Transferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_TransferenciasActionPerformed(evt);
+            }
+        });
+        jToolBar.add(JB_Transferencias);
 
-        jLabel1.setText("jLabel1");
+        jLabel14.setText("jLabel1");
 
         JMB_Principal.setBackground(new java.awt.Color(204, 0, 51));
         JMB_Principal.setForeground(new java.awt.Color(204, 0, 51));
 
-        JM_OpcionesP1.setBackground(new java.awt.Color(204, 0, 51));
-        JM_OpcionesP1.setText("Opciones");
+        JM_OpcionesP.setBackground(new java.awt.Color(204, 0, 51));
+        JM_OpcionesP.setText("Opciones");
 
-        JMI_CrearEquipos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMI_CrearEquipos.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
-        JMI_CrearEquipos.setText("Crear Equipos");
-        JM_OpcionesP1.add(JMI_CrearEquipos);
+        JMI_CrearEquipos1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMI_CrearEquipos1.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JMI_CrearEquipos1.setText("Crear Equipos");
+        JM_OpcionesP.add(JMI_CrearEquipos1);
 
-        JMI_CrearJugadores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMI_CrearJugadores.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
-        JMI_CrearJugadores.setText("Crear Jugadores");
-        JM_OpcionesP1.add(JMI_CrearJugadores);
+        JMI_CrearJugadores1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMI_CrearJugadores1.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JMI_CrearJugadores1.setText("Crear Jugadores");
+        JM_OpcionesP.add(JMI_CrearJugadores1);
 
-        JMI_Transferencias.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMI_Transferencias.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
-        JMI_Transferencias.setText("Transferencias");
-        JM_OpcionesP1.add(JMI_Transferencias);
+        JMI_Transferencias1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMI_Transferencias1.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
+        JMI_Transferencias1.setText("Transferencias");
+        JM_OpcionesP.add(JMI_Transferencias1);
 
-        JMB_Principal.add(JM_OpcionesP1);
+        JMB_Principal.add(JM_OpcionesP);
 
-        JM_AyudaP1.setBackground(new java.awt.Color(204, 0, 51));
-        JM_AyudaP1.setText("Edit");
-        JMB_Principal.add(JM_AyudaP1);
+        JM_AyudaP.setBackground(new java.awt.Color(204, 0, 51));
+        JM_AyudaP.setText("Edit");
+        JMB_Principal.add(JM_AyudaP);
 
-        setJMenuBar(JMB_Principal);
+        JF_MenuPrincipal.setJMenuBar(JMB_Principal);
+
+        javax.swing.GroupLayout JF_MenuPrincipalLayout = new javax.swing.GroupLayout(JF_MenuPrincipal.getContentPane());
+        JF_MenuPrincipal.getContentPane().setLayout(JF_MenuPrincipalLayout);
+        JF_MenuPrincipalLayout.setHorizontalGroup(
+            JF_MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JF_MenuPrincipalLayout.setVerticalGroup(
+            JF_MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JF_MenuPrincipalLayout.createSequentialGroup()
+                .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 691, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
+            .addGap(0, 544, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void JB_CrearEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearEquiposActionPerformed
+        JF_MenuPrincipal.setVisible(false);
+        JF_CrearEquipos.setBounds(this.getBounds());
+        JF_CrearEquipos.setLocationRelativeTo(this);
         JF_CrearEquipos.setVisible(true);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_JB_CrearEquiposActionPerformed
+
+    private void JB_CrearJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearJugadoresActionPerformed
+        JF_MenuPrincipal.setVisible(false);
+        JF_CrearJugadores.setBounds(this.getBounds());
+        JF_CrearJugadores.setLocationRelativeTo(this);
+        JF_CrearJugadores.setVisible(true);
+
+    }//GEN-LAST:event_JB_CrearJugadoresActionPerformed
+
+    private void JB_TransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_TransferenciasActionPerformed
+        JF_MenuPrincipal.setVisible(false);
+        JF_Transferencias.setBounds(this.getBounds());
+        JF_Transferencias.setLocationRelativeTo(this);
+        JF_Transferencias.setVisible(true);
+    }//GEN-LAST:event_JB_TransferenciasActionPerformed
+
+    private void JB_AtrasEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AtrasEquiposActionPerformed
+        JF_CrearEquipos.setVisible(false);
+        JF_MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_JB_AtrasEquiposActionPerformed
+
+    private void JB_AtrasJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AtrasJugadoresActionPerformed
+        JF_CrearJugadores.setVisible(false);
+        JF_MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_JB_AtrasJugadoresActionPerformed
+
+    private void JB_AtrasTransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AtrasTransferenciasActionPerformed
+        JF_Transferencias.setVisible(false);
+        JF_MenuPrincipal.setVisible(true);
+    }//GEN-LAST:event_JB_AtrasTransferenciasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,27 +586,35 @@ public class JFF_Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFF_Principal().setVisible(true);
+                new JFF_Principal().setVisible(false);
+
             }
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_AgregarEquipos;
     private javax.swing.JButton BT_AgregarJugadores;
+    private javax.swing.JButton JB_AtrasEquipos;
     private javax.swing.JButton JB_AtrasJugadores;
+    private javax.swing.JButton JB_AtrasTransferencias;
+    private javax.swing.JButton JB_CrearEquipos;
+    private javax.swing.JButton JB_CrearJugadores;
+    private javax.swing.JButton JB_Transferencias;
     private javax.swing.JButton JB_TransferenciasJugadores;
     private javax.swing.JComboBox<String> JCBOX_Posicion;
     private javax.swing.JFrame JF_CrearEquipos;
     private javax.swing.JFrame JF_CrearJugadores;
+    private javax.swing.JFrame JF_MenuPrincipal;
     private javax.swing.JFrame JF_Transferencias;
     private javax.swing.JList<String> JL_Jugadores;
     private javax.swing.JMenuBar JMB_Principal;
-    private javax.swing.JMenuItem JMI_CrearEquipos;
-    private javax.swing.JMenuItem JMI_CrearJugadores;
-    private javax.swing.JMenuItem JMI_Transferencias;
-    private javax.swing.JMenu JM_AyudaP1;
-    private javax.swing.JMenu JM_OpcionesP1;
+    private javax.swing.JMenuItem JMI_CrearEquipos1;
+    private javax.swing.JMenuItem JMI_CrearJugadores1;
+    private javax.swing.JMenuItem JMI_Transferencias1;
+    private javax.swing.JMenu JM_AyudaP;
+    private javax.swing.JMenu JM_OpcionesP;
     private javax.swing.JSpinner JSP_Edad;
     private javax.swing.JTextField JT_Cuidad;
     private javax.swing.JTextField JT_Estadio;
@@ -510,14 +622,11 @@ public class JFF_Principal extends javax.swing.JFrame {
     private javax.swing.JTextField JT_NombreJugador;
     private javax.swing.JTextField JT_PaisDelEquipo;
     private javax.swing.JTree JTree_Equipos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -531,6 +640,6 @@ public class JFF_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
 }
