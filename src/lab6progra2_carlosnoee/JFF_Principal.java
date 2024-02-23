@@ -24,14 +24,13 @@ public class JFF_Principal extends javax.swing.JFrame {
     public void LlenarList() {
         DefaultListModel Modelito = new DefaultListModel();
         for (int i = 0; i < ArrJugadoreLibres.size(); i++) {
-            Modelito.addElement(ArrJugadoreLibres.get(i).getNombre());
+            Modelito.add(i, ArrJugadoreLibres.get(i).getNombre());
         }
         JL_Jugadores.setModel(Modelito);
     }
 
     public JFF_Principal() {
         initComponents();
-        LlenarList();
         LlenarCombox();
         JF_MenuPrincipal.setBounds(this.getBounds());
         JF_MenuPrincipal.setLocationRelativeTo(this);
@@ -677,6 +676,7 @@ public class JFF_Principal extends javax.swing.JFrame {
         JF_CrearEquipos.setBounds(this.getBounds());
         JF_CrearEquipos.setLocationRelativeTo(this);
         JF_CrearEquipos.setVisible(true);
+        
     }//GEN-LAST:event_JB_CrearEquiposActionPerformed
 
     private void JB_CrearJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearJugadoresActionPerformed
@@ -692,6 +692,7 @@ public class JFF_Principal extends javax.swing.JFrame {
         JF_Transferencias.setBounds(this.getBounds());
         JF_Transferencias.setLocationRelativeTo(this);
         JF_Transferencias.setVisible(true);
+        LlenarList();
     }//GEN-LAST:event_JB_TransferenciasActionPerformed
 
     private void JB_AtrasEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AtrasEquiposActionPerformed
