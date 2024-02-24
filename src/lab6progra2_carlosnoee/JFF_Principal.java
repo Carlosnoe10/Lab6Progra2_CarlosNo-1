@@ -5,11 +5,17 @@
 package lab6progra2_carlosnoee;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListDataListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
 
 /**
  *
@@ -19,7 +25,26 @@ public class JFF_Principal extends javax.swing.JFrame {
 
     public ArrayList<Equipos> ArrEquipos = new ArrayList();
     public ArrayList<Jugadores> ArrJugadoreLibres = new ArrayList();
+
     public int POS;
+
+ 
+
+    public void JtreeLlenar() {
+        DefaultMutableTreeNode Equipos1 = new DefaultMutableTreeNode("Equipos");
+        TreeModel Equiposs = new DefaultTreeModel(Equipos1);
+
+        for (int i = 0; i < ArrEquipos.size(); i++) {
+            DefaultMutableTreeNode Pais = new DefaultMutableTreeNode(ArrEquipos.get(i).getPais());
+            Equipos1.add(Pais);
+        }
+
+        JTree_Equipos.setModel(Equiposs);
+
+    }
+    public void JtreeValidarPais(){
+
+    }
 
     public void LlenarList() {
         DefaultListModel Modelito = new DefaultListModel();
@@ -37,11 +62,15 @@ public class JFF_Principal extends javax.swing.JFrame {
         JF_MenuPrincipal.setVisible(true);
     }
 
+        public void LlenarCombox1() {
+        JCBOX_MODPosicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Portero", "Defensa", "MedioCampista", "Delantero"}));
+    }
     public void LlenarCombox() {
         JCBOX_Posicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Portero", "Defensa", "MedioCampista", "Delantero"}));
     }
 
     public void AjustarMod() {
+        JD_MODJugadores.setBounds(this.getBounds());
         JD_MODJugadores.setLocationRelativeTo(this);
         JD_MODJugadores.setVisible(true);
         JT_MODNombreJugador.setText(ArrJugadoreLibres.get(POS).getNombre());
@@ -557,6 +586,11 @@ public class JFF_Principal extends javax.swing.JFrame {
         JPOP_MenuJugadores.add(JPOP_ModJugadores);
 
         JPOP_DELJugadores.setText("Eliminar");
+        JPOP_DELJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JPOP_DELJugadoresActionPerformed(evt);
+            }
+        });
         JPOP_MenuJugadores.add(JPOP_DELJugadores);
 
         JD_MODJugadores.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -672,14 +706,20 @@ public class JFF_Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JB_CrearEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearEquiposActionPerformed
+        JT_Cuidad.setText("");
+        JT_Estadio.setText("");
+        JT_NombreDelEquipo.setText("");
+        JT_PaisDelEquipo.setText("");
         JF_MenuPrincipal.setVisible(false);
         JF_CrearEquipos.setBounds(this.getBounds());
         JF_CrearEquipos.setLocationRelativeTo(this);
         JF_CrearEquipos.setVisible(true);
-        
+
     }//GEN-LAST:event_JB_CrearEquiposActionPerformed
 
     private void JB_CrearJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearJugadoresActionPerformed
+        JT_NombreJugador.setText("");
+        LlenarCombox();
         JF_MenuPrincipal.setVisible(false);
         JF_CrearJugadores.setBounds(this.getBounds());
         JF_CrearJugadores.setLocationRelativeTo(this);
@@ -693,6 +733,8 @@ public class JFF_Principal extends javax.swing.JFrame {
         JF_Transferencias.setLocationRelativeTo(this);
         JF_Transferencias.setVisible(true);
         LlenarList();
+        VerificadorNombres();
+        JtreeLlenar();
     }//GEN-LAST:event_JB_TransferenciasActionPerformed
 
     private void JB_AtrasEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AtrasEquiposActionPerformed
@@ -720,11 +762,15 @@ public class JFF_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_JL_JugadoresMouseClicked
 
     private void JPOP_ModJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPOP_ModJugadoresActionPerformed
+
         if (JL_Jugadores.isSelectionEmpty()) {
         } else {
             //Empieza desde 0  
             POS = JL_Jugadores.getSelectedIndex();
+            JT_NombreJugador.setText("");
+            LlenarCombox1();
             AjustarMod();
+
         }
 
     }//GEN-LAST:event_JPOP_ModJugadoresActionPerformed
@@ -755,6 +801,18 @@ public class JFF_Principal extends javax.swing.JFrame {
         JF_MenuPrincipal.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_BT_AgregarJugadoresActionPerformed
+
+    private void JPOP_DELJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPOP_DELJugadoresActionPerformed
+        if (JL_Jugadores.isSelectionEmpty()) {
+        } else {
+            //Empieza desde 0  
+            POS = JL_Jugadores.getSelectedIndex();
+            ArrJugadoreLibres.remove(POS);
+            JOptionPane.showMessageDialog(this, "Elmininado COrrectamente");
+            LlenarList();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPOP_DELJugadoresActionPerformed
 
     /**
      * @param args the command line arguments
