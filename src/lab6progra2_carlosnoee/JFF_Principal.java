@@ -25,46 +25,75 @@ public class JFF_Principal extends javax.swing.JFrame {
 
     public ArrayList<Equipos> ArrEquipos = new ArrayList();
     public ArrayList<Jugadores> ArrJugadoreLibres = new ArrayList();
-
+    ArrayList<String> Paises = new ArrayList<>();
     public int POS;
 
     public void JtreeLlenar() {
         DefaultMutableTreeNode Equipos1 = new DefaultMutableTreeNode("Equipos");
         TreeModel Equiposs = new DefaultTreeModel(Equipos1);
+        PaisesMens();
+        for (int a = 0; a < Paises.size(); a++) {
+            DefaultMutableTreeNode Pais = new DefaultMutableTreeNode(Paises.get(a));
+            Equipos1.add(Pais);
+            for (int c = 0; c < Equipos1.getChildCount(); c++) {
+                for (int i = 0; i < ArrEquipos.size(); i++) {
 
-        for (int i = 0; i < ArrEquipos.size(); i++) {
-            DefaultMutableTreeNode Pais = new DefaultMutableTreeNode(ArrEquipos.get(i).getPais());
-            DefaultMutableTreeNode Escuadron = new DefaultMutableTreeNode(ArrEquipos.get(i).getNombre());
+                    if (Equipos1.getChildAt(c).toString().equalsIgnoreCase(ArrEquipos.get(i).getPais())) {
 
-            for (int j = 0; j < ArrEquipos.get(i).getPlantilla().size(); j++) {
-                if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Delantero")) {
-                    DefaultMutableTreeNode Delantere = new DefaultMutableTreeNode("Delantero");
-                    DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
-                    Delantere.add(Jug);
-                    Escuadron.add(Delantere);
-                } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("MedioCampista")) {
-                    DefaultMutableTreeNode Medio = new DefaultMutableTreeNode("MedioCampista");
-                    DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
-                    Medio.add(Jug);
-                    Escuadron.add(Medio);
-                } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Defensa")) {
-                    DefaultMutableTreeNode Defense = new DefaultMutableTreeNode("Defensa");
-                    DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
-                    Defense.add(Jug);
-                    Escuadron.add(Defense);
-                } else {
-                    DefaultMutableTreeNode Portero = new DefaultMutableTreeNode("Portero");
-                    DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
-                    Portero.add(Jug);
-                    Escuadron.add(Portero);
+                        DefaultMutableTreeNode Escuadron = new DefaultMutableTreeNode(ArrEquipos.get(i).getNombre());
+
+                        for (int j = 0; j < ArrEquipos.get(i).getPlantilla().size(); j++) {
+                            if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Delantero")) {
+                                DefaultMutableTreeNode Delantere = new DefaultMutableTreeNode("Delantero");
+                                DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
+                                Delantere.add(Jug);
+                                Escuadron.add(Delantere);
+                                Pais.add(Escuadron);
+                            } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("MedioCampista")) {
+                                DefaultMutableTreeNode Medio = new DefaultMutableTreeNode("MedioCampista");
+                                DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
+                                Medio.add(Jug);
+                                Escuadron.add(Medio);
+                                Pais.add(Escuadron);
+                            } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Defensa")) {
+                                DefaultMutableTreeNode Defense = new DefaultMutableTreeNode("Defensa");
+                                DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
+                                Defense.add(Jug);
+                                Escuadron.add(Defense);
+                                Pais.add(Escuadron);
+                            } else {
+                                DefaultMutableTreeNode Portero = new DefaultMutableTreeNode("Portero");
+                                DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
+                                Portero.add(Jug);
+                                Escuadron.add(Portero);
+                                Pais.add(Escuadron);
+                            }
+                        }
+                    }
                 }
             }
-            Pais.add(Escuadron);
-            Equipos1.add(Pais);
+                        
+                        Equipos1.add(Pais);
+                    }
+
+                    JTree_Equipos.setModel(Equiposs);
+
+                }
+    
+    
+
+    
+
+    
+
+    public void PaisesMens() {
+        ArrayList<String> paisesUnicos = new ArrayList<>();
+        for (Equipos equipo : ArrEquipos) {
+            if (!paisesUnicos.contains(equipo.getPais())) {
+                paisesUnicos.add(equipo.getPais());
+            }
         }
-
-        JTree_Equipos.setModel(Equiposs);
-
+        paisesUnicos = Paises;
     }
 
     public void JtreeValidarPais() {
