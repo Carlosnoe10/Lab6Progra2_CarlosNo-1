@@ -30,70 +30,63 @@ public class JFF_Principal extends javax.swing.JFrame {
 
     public void JtreeLlenar() {
         DefaultMutableTreeNode Equipos1 = new DefaultMutableTreeNode("Equipos");
-        TreeModel Equiposs = new DefaultTreeModel(Equipos1);
+
         PaisesMens();
         for (int a = 0; a < Paises.size(); a++) {
             DefaultMutableTreeNode Pais = new DefaultMutableTreeNode(Paises.get(a));
             Equipos1.add(Pais);
-            for (int c = 0; c < Equipos1.getChildCount(); c++) {
-                for (int i = 0; i < ArrEquipos.size(); i++) {
+        }
+        for (int c = 0; c < Equipos1.getChildCount(); c++) {
 
-                    if (Equipos1.getChildAt(c).toString().equalsIgnoreCase(ArrEquipos.get(i).getPais())) {
+            for (int i = 0; i < ArrEquipos.size(); i++) {
+                if (Equipos1.getChildAt(c).toString().equalsIgnoreCase(ArrEquipos.get(i).getPais())) {
+                    DefaultMutableTreeNode Escuadron = new DefaultMutableTreeNode(ArrEquipos.get(i).getNombre());
 
-                        DefaultMutableTreeNode Escuadron = new DefaultMutableTreeNode(ArrEquipos.get(i).getNombre());
-
-                        for (int j = 0; j < ArrEquipos.get(i).getPlantilla().size(); j++) {
-                            if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Delantero")) {
-                                DefaultMutableTreeNode Delantere = new DefaultMutableTreeNode("Delantero");
-                                DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
-                                Delantere.add(Jug);
-                                Escuadron.add(Delantere);
-                                Pais.add(Escuadron);
-                            } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("MedioCampista")) {
-                                DefaultMutableTreeNode Medio = new DefaultMutableTreeNode("MedioCampista");
-                                DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
-                                Medio.add(Jug);
-                                Escuadron.add(Medio);
-                                Pais.add(Escuadron);
-                            } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Defensa")) {
-                                DefaultMutableTreeNode Defense = new DefaultMutableTreeNode("Defensa");
-                                DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
-                                Defense.add(Jug);
-                                Escuadron.add(Defense);
-                                Pais.add(Escuadron);
-                            } else {
-                                DefaultMutableTreeNode Portero = new DefaultMutableTreeNode("Portero");
-                                DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
-                                Portero.add(Jug);
-                                Escuadron.add(Portero);
-                                Pais.add(Escuadron);
-                            }
+                    for (int j = 0; j < ArrEquipos.get(i).getPlantilla().size(); j++) {
+                        if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Delantero")) {
+                            DefaultMutableTreeNode Delantere = new DefaultMutableTreeNode("Delantero");
+                            DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
+                            Delantere.add(Jug);
+                            Escuadron.add(Delantere);
+                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
+                        } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("MedioCampista")) {
+                            DefaultMutableTreeNode Medio = new DefaultMutableTreeNode("MedioCampista");
+                            DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
+                            Medio.add(Jug);
+                            Escuadron.add(Medio);
+                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
+                        } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Defensa")) {
+                            DefaultMutableTreeNode Defense = new DefaultMutableTreeNode("Defensa");
+                            DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
+                            Defense.add(Jug);
+                            Escuadron.add(Defense);
+                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
+                        } else {
+                            DefaultMutableTreeNode Portero = new DefaultMutableTreeNode("Portero");
+                            DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
+                            Portero.add(Jug);
+                            Escuadron.add(Portero);
+                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
                         }
+                        ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
                     }
                 }
             }
-                        
-                        Equipos1.add(Pais);
-                    }
 
-                    JTree_Equipos.setModel(Equiposs);
+        }
+        TreeModel Equiposs = new DefaultTreeModel(Equipos1);
+        JTree_Equipos.setModel(Equiposs);
 
-                }
-    
-    
-
-    
-
-    
+    }
 
     public void PaisesMens() {
-        ArrayList<String> paisesUnicos = new ArrayList<>();
+
         for (Equipos equipo : ArrEquipos) {
-            if (!paisesUnicos.contains(equipo.getPais())) {
-                paisesUnicos.add(equipo.getPais());
+            if (!Paises.contains(equipo.getPais())) {
+                Paises.add(equipo.getPais());
             }
         }
-        paisesUnicos = Paises;
+
     }
 
     public void JtreeValidarPais() {
