@@ -455,6 +455,11 @@ public class JFF_Principal extends javax.swing.JFrame {
         JB_TransferenciasJugadores.setFont(new java.awt.Font("Comic Sans MS", 3, 18)); // NOI18N
         JB_TransferenciasJugadores.setForeground(new java.awt.Color(0, 0, 0));
         JB_TransferenciasJugadores.setText("Transferir ----->");
+        JB_TransferenciasJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_TransferenciasJugadoresActionPerformed(evt);
+            }
+        });
 
         JL_Jugadores.setBackground(java.awt.Color.orange);
         JL_Jugadores.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -860,6 +865,10 @@ public class JFF_Principal extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_JPOP_DELJugadoresActionPerformed
+
+    private void JB_TransferenciasJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_TransferenciasJugadoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JB_TransferenciasJugadoresActionPerformed
 
     /**
      * @param args the command line arguments
