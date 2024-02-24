@@ -647,6 +647,9 @@
     <Container class="javax.swing.JFrame" name="JF_MenuPrincipal">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="3"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="99" type="rgb"/>
+        </Property>
       </Properties>
 
       <Layout>
@@ -661,7 +664,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jToolBar" min="-2" pref="67" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel14" pref="471" max="32767" attributes="0"/>
+                  <Component id="jLabel14" min="-2" pref="461" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -732,7 +736,9 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/lab6progra2_carlosnoee/Tsar.jpg"/>
+            </Property>
           </Properties>
         </Component>
         <Menu class="javax.swing.JMenuBar" name="JMB_Principal">

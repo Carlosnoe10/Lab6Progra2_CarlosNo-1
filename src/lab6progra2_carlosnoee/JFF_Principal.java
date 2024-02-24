@@ -16,6 +16,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 
 /**
  *
@@ -41,34 +42,34 @@ public class JFF_Principal extends javax.swing.JFrame {
             for (int i = 0; i < ArrEquipos.size(); i++) {
                 if (Equipos1.getChildAt(c).toString().equalsIgnoreCase(ArrEquipos.get(i).getPais())) {
                     DefaultMutableTreeNode Escuadron = new DefaultMutableTreeNode(ArrEquipos.get(i).getNombre());
-
+                    ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
                     for (int j = 0; j < ArrEquipos.get(i).getPlantilla().size(); j++) {
                         if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Delantero")) {
                             DefaultMutableTreeNode Delantere = new DefaultMutableTreeNode("Delantero");
                             DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
                             Delantere.add(Jug);
                             Escuadron.add(Delantere);
-                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
+
                         } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("MedioCampista")) {
                             DefaultMutableTreeNode Medio = new DefaultMutableTreeNode("MedioCampista");
                             DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
                             Medio.add(Jug);
                             Escuadron.add(Medio);
-                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
+//                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
                         } else if (ArrEquipos.get(i).getPlantilla().get(j).getPosicion().equalsIgnoreCase("Defensa")) {
                             DefaultMutableTreeNode Defense = new DefaultMutableTreeNode("Defensa");
                             DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
                             Defense.add(Jug);
                             Escuadron.add(Defense);
-                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
+//                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
                         } else {
                             DefaultMutableTreeNode Portero = new DefaultMutableTreeNode("Portero");
                             DefaultMutableTreeNode Jug = new DefaultMutableTreeNode(ArrEquipos.get(i).getPlantilla().get(j).getNombre());
                             Portero.add(Jug);
                             Escuadron.add(Portero);
-                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
+//                            ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
                         }
-                        ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
+//                        ((DefaultMutableTreeNode) Equipos1.getChildAt(i)).add(Escuadron);
                     }
                 }
             }
@@ -541,6 +542,7 @@ public class JFF_Principal extends javax.swing.JFrame {
         );
 
         JF_MenuPrincipal.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        JF_MenuPrincipal.setBackground(new java.awt.Color(153, 0, 0));
 
         jToolBar.setBackground(new java.awt.Color(204, 0, 51));
         jToolBar.setRollover(true);
@@ -584,7 +586,7 @@ public class JFF_Principal extends javax.swing.JFrame {
         });
         jToolBar.add(JB_Transferencias);
 
-        jLabel14.setText("jLabel1");
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab6progra2_carlosnoee/Tsar.jpg"))); // NOI18N
 
         JMB_Principal.setBackground(new java.awt.Color(204, 0, 51));
         JMB_Principal.setForeground(new java.awt.Color(204, 0, 51));
@@ -627,7 +629,8 @@ public class JFF_Principal extends javax.swing.JFrame {
             .addGroup(JF_MenuPrincipalLayout.createSequentialGroup()
                 .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JPOP_ModJugadores.setText("Modificar");
@@ -862,12 +865,26 @@ public class JFF_Principal extends javax.swing.JFrame {
             ArrJugadoreLibres.remove(POS);
             JOptionPane.showMessageDialog(this, "Elmininado COrrectamente");
             LlenarList();
+            JtreeLlenar();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_JPOP_DELJugadoresActionPerformed
 
     private void JB_TransferenciasJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_TransferenciasJugadoresActionPerformed
-        // TODO add your handling code here:
+        if (JL_Jugadores.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un jugador del la liste");
+        } else {
+            //Empieza desde 0 
+            POS = JL_Jugadores.getSelectedIndex();
+            Jugadores NOT = ArrJugadoreLibres.get(POS);
+//            TreePath path = JTree_Equipos.getSelectionPath();
+//            if (path != null) {
+//                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) path.getLastPathComponent();
+//                ((Equipos) selectedNode.getUserObject()).getPlantilla().add(NOT);
+//            }
+//
+//            JtreeLlenar();
+        }
     }//GEN-LAST:event_JB_TransferenciasJugadoresActionPerformed
 
     /**
